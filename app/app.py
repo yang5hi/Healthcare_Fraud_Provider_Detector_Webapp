@@ -7,23 +7,38 @@ from flask import Flask, render_template, request,redirect
 app = Flask(__name__)
 
 # =========================================================================================================
-# read in csv file
-# =========================================================================================================
-# Set features (X) and target (y)
-y=game_info_df['average']
-X=game_info_df[['numwanting', 'siteviews', 'blogs', 'minage', 'news','podcast', 
-'totalvotes', 'numcomments', 'numgeeklists', 'weblink']].copy()
+import matplotlib.pyplot as plt
 
-# Scale the data
-from sklearn.preprocessing import MinMaxScaler
-X_scaler = MinMaxScaler().fit(X)
-X_scaled = X_scaler.transform(X)
-# =========================================================================================================
-from sklearn.ensemble import RandomForestRegressor
- # Create a random forest regressor,  n_estimators=100, criterion="mse", max_depth="None"
-rf = RandomForestRegressor()
-rf.fit(X_scaled, y)
-# =========================================================================================================
+from sklearn.datasets import make_classification
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import DetCurveDisplay, RocCurveDisplay
+from sklearn.model_selection import train_test_split
+from sklearn.pipeline import make_pipeline
+from sklearn.preprocessing import StandardScaler
+from sklearn.svm import LinearSVC
+
+N_SAMPLES = 1000
+
+classifiers = {
+    "Linear SVM": make_pipeline(StandardScaler(), LinearSVC(C=0.025)),
+    "Random Forest": RandomForestClassifier(
+        max_depth=5, n_estimators=10, max_features=1
+    ),
+}
+
+X, y = make_classification(
+    n_samples=N_SAMPLES,
+    n_features=2,
+    n_redundant=0,
+    n_informative=2,
+    random_state=1,
+    n_clusters_per_class=1,
+)
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.4, random_state=0)
+
+
+
 
 app = Flask(__name__, static_url_path='/static')
 
