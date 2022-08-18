@@ -70,7 +70,7 @@ def prediction():
     X_pred = np.array([[numwanting,siteviews, blogs, minage, news,
                 podcast, totalvotes, numcomments, numgeeklists, weblink]])
 
-    y_pred = rf.predict(X_pred)
+    y_pred = classifiers.predict(X_pred)
 
     RF_pred = [round(y_pred[0], 2)]
     print(f'RF prediction= {RF_pred[0]}')
@@ -80,4 +80,4 @@ def prediction():
 
     
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0', port=5000)
