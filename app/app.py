@@ -2,19 +2,12 @@
 import numpy as np
 import pandas as pd
 from flask import Flask, render_template, request,redirect
-from sqlalchemy import create_engine
 
 # Create an instance of Flask
 app = Flask(__name__)
 
 # =========================================================================================================
-# Create database connection
-# change the owner name, password and port number based on your local situation
-# engine = create_engine(f'postgresql://{*database_owner}:{*password}@localhost:{*port}/housing_db')
-rds_connection_string = "postgres:postgres@localhost:5432/boardgame_db"
-engine = create_engine(f'postgresql://{rds_connection_string}')
 # read in csv file
-game_info_df=pd.read_sql_query('select * from game_info', con=engine)
 # =========================================================================================================
 # Set features (X) and target (y)
 y=game_info_df['average']
