@@ -3,7 +3,8 @@ from flask_restful import reqparse, abort, Api, Resource
 import pickle
 import numpy as np
 from model import Fraud_Detector
-from transformer import Provider_Transformer
+from transformer import DateTransform, AgeTransform,CodeCountTransform,CodeFrequencyGroupTransform
+from transformer import Top15OneHotTransform,ProviderLevelAggregateTransform
 import os
 import json
 
@@ -39,7 +40,7 @@ class PredictFraud(Resource):
         print(predict_proba)
         results = {'results':[]}
         for proba in predict_proba[:,1]:
-            results['results'].append({'label': get_prediction(proba), 'ModelScore':proba})      
+            results['results'].append({'label': get_prediction(proba), 'ModelScore':round(proba,4)})      
         return results
 
 

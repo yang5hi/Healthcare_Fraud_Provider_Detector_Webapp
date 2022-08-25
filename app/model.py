@@ -2,7 +2,10 @@ import pandas as pd
 from sklearn.pipeline import Pipeline
 from sklearn.linear_model import LogisticRegression
 from sklearn.preprocessing import StandardScaler#, MinMaxScaler
-from transformer import Provider_Transformer
+from transformer import DateTransform, AgeTransform,CodeCountTransform,CodeFrequencyGroupTransform
+from transformer import Top15OneHotTransform,ProviderLevelAggregateTransform
+import numpy as np
+from sklearn.model_selection import train_test_split
 
 class Fraud_Detector(object):
     def __init__(self):
@@ -21,10 +24,8 @@ class Fraud_Detector(object):
         Train a model 
         """
         # load the data from csv to pandas dataframe
-        # X_test_aggregated_raw = pd.read_csv("data/X_test_0817.csv")
-        X_train_aggregated_raw = pd.read_csv("data/X_train_0817.csv")
-        # y_test_aggregated_raw = pd.read_csv("data/y_test_0817.csv")
-        y_train_aggregated_raw = pd.read_csv("data/y_train_0817.csv")
+        X_train_aggregated_raw = pd.read_csv("data/X_train.csv")
+        y_train_aggregated_raw = pd.read_csv("data/y_train.csv")
 
         # Define feature and target 
         target = ["Provider", "PotentialFraud"]
@@ -32,9 +33,7 @@ class Fraud_Detector(object):
         self.features = [fea for fea in features if fea not in target]
 
         y_train=y_train_aggregated_raw['PotentialFraud']
-        # y_test=y_test_aggregated_raw['PotentialFraud']
         X_train=X_train_aggregated_raw.drop('Provider',axis=1).fillna(0)
-        # X_test=X_test_aggregated_raw.drop('Provider',axis=1).fillna(0)
 
         self.build_model()
         self.model = self.pipeline.fit(X_train, y_train)
