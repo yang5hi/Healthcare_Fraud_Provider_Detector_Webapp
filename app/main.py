@@ -37,10 +37,10 @@ class PredictFraud(Resource):
         try:
             predict_proba = model.predict(json.loads(user_query.replace("\'", "\"")))
         except:
-            predict_proba = 1
+            predict_proba = [[1,1],[1,1]]
         
-        print("***************************")
-        print(predict_proba)
+        # print("***************************")
+        # print(predict_proba)
         results = {'results':[]}
         for proba in predict_proba[:,1]:
             results['results'].append({'label': get_prediction(proba), 'ModelScore':round(proba,4)})      
