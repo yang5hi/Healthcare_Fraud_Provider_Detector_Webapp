@@ -34,7 +34,10 @@ class PredictFraud(Resource):
         user_query = args['query']
         # json needs to replace single quote with double 
         # print(json.loads(json.dumps(user_query)))
-        predict_proba = model.predict(json.loads(user_query.replace("\'", "\"")))
+        try:
+            predict_proba = model.predict(json.loads(user_query.replace("\'", "\"")))
+        except:
+            predict_proba = 1
         
         print("***************************")
         print(predict_proba)
