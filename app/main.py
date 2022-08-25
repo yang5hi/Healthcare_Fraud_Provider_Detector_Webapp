@@ -37,7 +37,7 @@ class PredictFraud(Resource):
         try:
             predict_proba = model.predict(json.loads(user_query.replace("\'", "\"")))
         except:
-            predict_proba = [[1,1],[1,1]]
+            predict_proba = np.array([[1,1]])
         
         # print("***************************")
         # print(predict_proba)
