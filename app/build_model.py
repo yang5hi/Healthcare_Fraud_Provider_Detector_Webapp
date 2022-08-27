@@ -6,7 +6,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.preprocessing import StandardScaler#, MinMaxScaler
 import numpy as np
 from sklearn.model_selection import train_test_split
-from model import Fraud_Detector
+from model import Fraud_Detector, Fraud_Detector_RF8
 import pickle
 # load the data from csv to pandas dataframe
 provider = pd.read_csv("data/Train-1542865627584.csv")
@@ -76,3 +76,8 @@ model = Fraud_Detector()
 model.train()
 with open('models/model.pkl', 'wb') as f:
 	pickle.dump(model,f)
+
+model_rf8 = Fraud_Detector_RF8()
+model_rf8.train()
+with open('models/model_rf8.pkl', 'wb') as f_rf8:
+	pickle.dump(model_rf8,f_rf8)

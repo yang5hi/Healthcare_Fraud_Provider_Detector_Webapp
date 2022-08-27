@@ -57,6 +57,7 @@
           <li><a class="nav-link scrollto" href="#fitting">Fitting</a></li>
           <li><a class="nav-link scrollto " href="#performance">Performance</a></li>
           <li><a class="nav-link scrollto " href="#prediction">Prediction</a></li>
+          <li><a class="nav-link scrollto " href="#prediction">Model Prediction</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -111,7 +112,7 @@
         <div class="section-title">
           <h3>Learn More About<span> Fraudulent Providers </span></h3>
           <br>
-          <p>For our exploratory data analysis, we chose to highlight attributes in the categories of AAA,BBB,CCC,DDD.</p>
+          <p>  *********************** </p>
           <!-- ======= Tableau Insert ============-->
 
           <!-- ======= End Tableau Insert ============-->
@@ -119,11 +120,11 @@
           <div class="col-lg-12">
             <ul>
               <li><i class="ri-check-double-line"></i> 
-                Opinions: The more desirable a game, the higher the rating; but a rating of 9 or 10 is hard to achieve.
+                According to the National Health Care Anti-Fraud Association, health insurance frauds in the United States cost around USD 80 billion per year to the consumers.
                 </li>
-              <li><i class="ri-check-double-line"></i> Player: Not much variance with min number of players, the rating is going up with min age and min play time, but also maxed out at 7/8.
+              <li><i class="ri-check-double-line"></i> Criminals are looking forward to profiting from the people across the country.
                 </li>
-              <li><i class="ri-check-double-line"></i> Design: The dataset contains game published mostly in the past 50 years, the new games are having a higer rating compare to old ones. Higher rating games tends to have more mechanics and in multiple categories.</li>
+              <li><i class="ri-check-double-line"></i> As most of the people in the country are having health insurance, free medical treatments or complimentary consultation offers are being stolen.</li>
             </ul>
           </div>
         </div>
@@ -134,7 +135,7 @@
       <div class="container">
         <div class="text-center">
           <h3>Machine Learning</h3>
-          <p>With the game data visualized, we choose to dive deep into predictions of ratings based on numerical values related to the game.</p>
+          <p> We propose a binary classification model to label potential fraudulent providers. </p>
           <a class="cta-btn" href="#prediction">Explore More on Ratings Prediction</a>
         </div>
       </div>
@@ -158,8 +159,8 @@
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
             <div class="icon-box">
               <div class="icon"><i class="ri-bar-chart-box-line"></i></div>
-              <h4 class="title"><a href="">Scale, Train/Test Split</a></h4>
-              <p class="description">Scale the data with maxminscalar or standardscalar, and use 100% of the data to train.</p>
+              <h4 class="title"><a href=""> Feature Engineering </a></h4>
+              <p class="description"> Aggregate feature from claim level to provider level with min, max, total, frequency, etc</p>
             </div>
           </div>
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
@@ -184,46 +185,45 @@
       <div class="container">
         <div class="section-title">
           <h3>Check our <span>Models</span></h3>
-          <p>Plots of Prediction vs Actual and Residual on Regression Results</p>
+          <p>PR-AUC</p>
+          <p>Threshold value - reach 100% precision as possible while maximizing recall </p>
         </div>
         <div class="row">
           <div class="col-lg-12 d-flex justify-content-center">
             <ul id="portfolio-flters">
               <li data-filter="*" class="filter-active">All</li>
-              <li data-filter=".filter-app">Corr Heatmap</li>
-              <li data-filter=".filter-web">Feature Importance</li>
-              <li data-filter=".filter-card">Machine Learning Models</li>
+              <li data-filter=".filter-app">Logistic Regression</li>
+              <li data-filter=".filter-web">RandomForestClassifier</li>
+              <li data-filter=".filter-card">XGBoostClassifier</li>
             </ul>
           </div>
         </div>
         <div class="row portfolio-container">
-          <div class="col-md-6 portfolio-item filter-app">
-            <img src="../static/img/heat.png" class="img-fluid" alt="corr heat map">
+          <div class="col-md-12 portfolio-item filter-app">
+            <img src="../static/img/compare.png" class="img-fluid" alt="corr heat map">
             <div class="portfolio-info">
-              <h4>Heatmap of Correlations</h4>
+              <h4>Performance Summary</h4>
             </div>
           </div>
-          <div class="col-md-6 portfolio-item filter-web">
-            <img src="../static/img/features.png" class="img-fluid" alt="features">
+          <div class="col-md-12 portfolio-item filter-web">
+            <img src="../static/img/logr.png" class="img-fluid" alt="features">
             <div class="portfolio-info">
-              <h4>Feature Importance</h4>
-              <p>RandomForestRegressor</p>
+              <h4>Model Performance</h4>
+              <p>LogisticRegression</p>
             </div>
           </div>
-          <div class="col-md-6 portfolio-item filter-card">
+          <div class="col-md-12 portfolio-item filter-card">
             <img src="../static/img/rf.png" class="img-fluid" alt="">
             <div class="portfolio-info">
-              <h4>RandomForestRegressor</h4>
-              <p>Threshold</p>
-              <p>Metric</p>
+              <h4>Model Performance</h4>
+              <p>RandomForestClassifier</p>
             </div>
           </div>
-          <div class="col-md-6 portfolio-item filter-card">
-            <img src="../static/img/logr.png" class="img-fluid" alt="">
+          <div class="col-md-12 portfolio-item filter-card">
+            <img src="../static/img/xgb.png" class="img-fluid" alt="">
             <div class="portfolio-info">
-              <h4>LogisticRegression</h4>
-              <p>Threshold</p>
-              <p>Metric</p>
+              <h4>Model Performance</h4>
+              <p>XGBoostClassifier</p>
             </div>
           </div>
         </div>
@@ -231,13 +231,87 @@
     </section>
     <!-- End Model performance I | Portfolio Section -->
     <!-- ======= Model Prediction | Contact Section ======= -->
-    <section id="prediction" class="contact">
-      <div class="container">
-          <div class="section-title">
-              <h3>Fraud <span> Prediction </span></h3>
-          </div>
+ <!-- ======= Model Prediction | Contact Section ======= -->
+ <section id="prediction" class="contact">
+  <div class="container">
+      <div class="section-title">
+          <h2>Model Predictions</h2>
+          <h3>RandomForestRegressor<span> Predictor</span></h3>
+          <p>Enter the values for variables, then hit the button.</p>
+          <!-- <a name="predict_result"></a> -->
       </div>
-    </section><!-- End Model Preidction | Contact Section -->
+      <div class="row">
+            <div class="col-lg-6">
+              <form action="{{ url_for('prediction') }}" method="post" class='php-email-form'>
+                    <div class="row">
+                        <div class="col-12 form-group mt-2">
+                          <input type="text" class="form-control" name="MaxHospitalDays" placeholder="MaxHospitalDays" required>
+                        </div>
+                        <div class="col-12 form-group mt-2">
+                          <input type="text" class="form-control" name="TotalInscClaimAmtReimbursed" placeholder="TotalInscClaimAmtReimbursed" required>
+                        </div>
+                        <div class="col-12 form-group mt-2">
+                          <input type="text" class="form-control" name="TotalIPAnnualReimbursementAmt" placeholder="TotalIPAnnualReimbursementAmt" required>
+                        </div>
+                        <div class="col-12 form-group mt-2">
+                          <input type="text" class="form-control" name="MaxInscClaimAmtReimbursed" placeholder="MaxInscClaimAmtReimbursed" required>
+                        </div>
+                        <div class="col-12 form-group mt-2">
+                          <input type="text" class="form-control" name="MaxDiagCodeNumPerClaim" placeholder="MaxDiagCodeNumPerClaim" required>
+                        </div>
+                        <div class="col-12 form-group mt-2">
+                          <input type="text" class="form-control" name="TotalDiagCodeNum" placeholder="TotalDiagCodeNum" required>
+                        </div>
+                        <div class="col-12 form-group mt-2">
+                          <input type="text" class="form-control" name="MaxProcCodeNumPerClaim" placeholder="MaxProcCodeNumPerClaim" required>
+                        </div>
+                        <div class="col-12 form-group mt-2">
+                          <input type="text" class="form-control" name="MeanProcCodeNumPerClaim" placeholder="MeanProcCodeNumPerClaim" required>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="text-center col-12"><button type="submit" href="#result"> Fraud Prediction</button></div>
+                    
+              </form> 
+            </div>
+            <div class="col-lg-1"></div>
+            <div class="col-lg-5">
+              <div class='row'>
+                      <div class="text-center">
+                        <h3 id="result"><b>Prediction: </b>{{ RF_pred }}</h3>
+                      </div>
+                      <p></p>
+                      <p><u>Independent Variables</u></p>
+                      <div class="col-12 mt-1">
+                        <p> MaxHospitalDays: {{ X_pred[0] }}</p>
+                      </div>
+                      <div class="col-12 mt-1">
+                        <p> TotalInscClaimAmtReimbursed: {{ X_pred[1] }} </p>
+                      </div>
+                      <div class="col-12 mt-1">
+                        <p> TotalIPAnnualReimbursementAmt: {{ X_pred[2] }} </p>
+                      </div>
+                      <div class="col-12 mt-1">
+                        <p> MaxInscClaimAmtReimbursed: {{ X_pred[3] }} </p>
+                      </div>
+                      <div class="col-12 mt-1">
+                        <p> MaxDiagCodeNumPerClaim: {{ X_pred[4] }} </p>
+                      </div>
+                      <div class="col-12 mt-1">
+                        <p> TotalDiagCodeNum: {{ X_pred[5] }} </p>
+                      </div>
+                      <div class="col-12 mt-1">
+                        <p> MaxProcCodeNumPerClaim: {{ X_pred[6] }} </p>
+                      </div>
+                      <div class="col-12 mt-1">
+                        <p> MeanProcCodeNumPerClaim: {{ X_pred[7] }} </p>
+                      </div>
+              </div>
+            </div>
+      </div>
+  </div>
+</section><!-- End Model Preidction | Contact Section -->
+    <!-- End Model Preidction | Contact Section -->
   </main><!-- End #main -->
   <!-- ======= Footer ======= -->
   <footer id="footer">

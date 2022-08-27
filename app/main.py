@@ -25,7 +25,7 @@ def get_prediction(score):
     score float: model proba
     return str: Legit or Fraud
     '''
-    return 'Fraud' if score >=0.24 else 'Legit'
+    return 'Fraud' if score >=0.8 else 'Legit'
 
 class PredictFraud(Resource):
     def get(self):
