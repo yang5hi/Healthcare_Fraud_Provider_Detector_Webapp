@@ -11,7 +11,7 @@ def get_prediction(score):
     score float: model proba
     return str: Legit or Fraud
     '''
-    return 'Fraud' if score >=0.8 else 'Legit'
+    return 'Fraud' if score >=0.6 else 'Legit'
 
 # load trained classifier
 model_path = 'models/model_rf8.pkl'
